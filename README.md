@@ -14,22 +14,21 @@
 [![Downloads](https://img.shields.io/pepy/dt/python-arango?style=for-the-badge&color=282661
 )](https://pepy.tech/project/python-arango)
 
-# Python-Arango
+# ddb-py
 
-Python driver for [ArangoDB](https://www.arangodb.com), a scalable multi-model
-database natively supporting documents, graphs and search.
+Python Core for [DarangoDB](https://github.com/dayour/darangodb), a fork of [ArangoDB](https://www.arangodb.com) with enhanced Prisma, Arm64, Docker, and FastAPI integration support. DarangoDB is a scalable multi-model database natively supporting documents, graphs and search.
 
 If you're interested in using asyncio, please check [python-arango-async](https://github.com/arangodb/python-arango-async).
 
 ## Requirements
 
-- ArangoDB version 3.11+
+- DarangoDB version 3.11+ (compatible with ArangoDB 3.11+)
 - Python version 3.9+
 
 ## Installation
 
 ```shell
-pip install python-arango --upgrade
+pip install ddb-py --upgrade
 ```
 
 ## Getting Started
@@ -39,7 +38,7 @@ Here is a simple usage example:
 ```python
 from arango import ArangoClient
 
-# Initialize the client for ArangoDB.
+# Initialize the client for DarangoDB.
 client = ArangoClient(hosts="http://localhost:8529")
 
 # Connect to "_system" database as root user.
@@ -72,7 +71,7 @@ Another example with [graphs](https://docs.arangodb.com/stable/graphs/):
 ```python
 from arango import ArangoClient
 
-# Initialize the client for ArangoDB.
+# Initialize the client for DarangoDB.
 client = ArangoClient(hosts="http://localhost:8529")
 
 # Connect to "test" database as root user.
