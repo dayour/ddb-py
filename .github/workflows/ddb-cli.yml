@@ -14,6 +14,9 @@ on:
       - 'tests/test_cli.py'
       - '.github/workflows/ddb-cli.yml'
 
+permissions:
+  contents: read
+
 jobs:
   test:
     runs-on: ubuntu-latest
