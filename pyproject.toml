@@ -42,6 +42,9 @@ dependencies = [
     "setuptools>=42",
     "importlib_metadata>=4.7.1",
     "packaging>=23.1",
+    "typer>=0.9.0",
+    "httpx>=0.24.0",
+    "rich>=13.0.0",
 ]
 
 [project.optional-dependencies]
@@ -66,8 +69,11 @@ dev = [
 [project.urls]
 homepage = "https://github.com/arangodb/python-arango"
 
+[project.scripts]
+ddb = "ddb.cli:main"
+
 [tool.setuptools]
-packages = ["arango"]
+packages = ["arango", "ddb"]
 
 
 [tool.pytest.ini_options]
