@@ -53,10 +53,11 @@ class DarangoClient:
         url = f"{self.base_url}{path}"
 
         try:
-            with httpx.Client(timeout=self.timeout) as client:
-                response = client.request(method, url, json=json, params=params)
-                response.raise_for_status()
-                return response.json()
+            response = httpx.request(
+                method, url, json=json, params=params, timeout=self.timeout
+            )
+            response.raise_for_status()
+            return response.json()
         except httpx.HTTPStatusError as e:
             error_msg = str(e)
             try:
