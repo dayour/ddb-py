@@ -1,0 +1,49 @@
+name: DDB CLI
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'ddb/**'
+      - 'tests/test_cli.py'
+      - '.github/workflows/ddb-cli.yml'
+  pull_request:
+    branches: [main]
+    paths:
+      - 'ddb/**'
+      - 'tests/test_cli.py'
+      - '.github/workflows/ddb-cli.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -e ".[dev]"
+
+      - name: Run CLI tests
+        run: pytest tests/test_cli.py -v
+
+      - name: Test CLI installation
+        run: |
+          ddb --help
+          ddb create --help
+          ddb query --help
+          ddb get --help
+          ddb insert --help
+          ddb update --help
+          ddb delete --help
